@@ -36,10 +36,14 @@ export default function Navbar() {
     if (typeof window !== "undefined") {
       const currentScrollPos = window.scrollY;
 
-      if (currentScrollPos > prevScrollPos) {
-        setScrollingDown(true);
+      if (currentScrollPos > prevScrollPos && currentScrollPos > 40) {
+        setTimeout(() => {
+          setScrollingDown(true);
+        }, 150);
       } else {
-        setScrollingDown(false);
+        setTimeout(() => {
+          setScrollingDown(false);
+        }, 150);
       }
 
       setPrevScrollPos(currentScrollPos);
