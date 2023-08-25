@@ -18,14 +18,8 @@ export default function Greetings({ data }: Props) {
           <h1 className="questa text-4xl 2xl:text-5xl mb-6 max-w-[480px]">
             {data?.title}
           </h1>
-          <p className="mb-4 2xl:text-lg">{data?.description}</p>
-          <p className="2xl:text-lg">
-            Sebagai salah satu kantor jasa profesi akuntan, kami berusaha
-            mewujudkan kondisi yang transparan dan akuntabel bagi seluruh
-            entitas bisnis yang ada di Indonesia yang berstandar baku serta
-            terukur. Salah satu wujudnya adalah dengan bertindak sebagai
-            konsultan akuntansi / keuangan bagi seluruh entitas usaha.
-          </p>
+          <p className="mb-4 2xl:text-lg">{data?.description1}</p>
+          <p className="2xl:text-lg">{data?.description2}</p>
         </div>
       </div>
     </section>

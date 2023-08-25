@@ -20,6 +20,10 @@ export default {
           title: "Features",
           type: "features",
         },
+        {
+          title: "Subscribe",
+          type: "subscribe",
+        },
       ],
     },
   ],

@@ -1,10 +1,13 @@
 import { type SchemaTypeDefinition } from "sanity";
 import { news } from "./schemas";
 import { colors, home, services, siteSettings } from "./schemas/singletons";
-import hero from "./schemas/objects/hero";
-import greetings from "./schemas/objects/greetings";
-import service from "./schemas/objects/service";
-import features from "./schemas/objects/features";
+import {
+  features,
+  greetings,
+  hero,
+  service,
+  subscribe,
+} from "./schemas/objects";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -19,5 +22,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     greetings,
     service,
     features,
+    subscribe,
   ],
 };
