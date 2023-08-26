@@ -11,13 +11,13 @@ export default function Accounting({}: Props) {
           <h1 className="questa text-4xl 2xl:text-5xl mb-8 lg:mb-12">
             Pedoman Akuntansi Perbankan Syariah Indonesia
           </h1>
-          <p className="lg:text-lg mb-8 lg:mb-12">
+          <p className="2xl:text-lg mb-8 lg:mb-12">
             Pedoman Akuntansi Perbankan Syariah adalah petunjuk pelaksanaan yang
             berisi penjabaran lebih lanjut dari beberapa Pernyataan Standar
             Akuntansi Keuangan (PSAK) yang relevan bagi industri perbankan
             syariah.
           </p>
-          <button className="flex items-center text-secondary hover:text-lightsecondary transition-colors duration-200 lg:text-lg font-bold">
+          <button className="flex items-center text-secondary hover:text-lightsecondary transition-colors duration-200 2xl:text-lg font-bold">
             BACA SELENGKAPNYA
             <img
               src="/svg/chevron-right.svg"

@@ -16,7 +16,7 @@ export default function Hero({ data }: Props) {
         <h1 className="questa text-5xl lg:text-[56px] 2xl:text-7xl max-w-[640px] 2xl:max-w-[800px]">
           {data?.title}
         </h1>
-        <p className="lg:text-lg 2xl:text-2xl my-12 2xl:my-16 max-w-[600px] 2xl:max-w-[800px] !leading-[36px]">
+        <p className="lg:text-lg 2xl:text-2xl my-12 2xl:my-16 max-w-[600px] 2xl:max-w-[800px]">
           {data?.subtitle}
         </p>
         {data?.cta?.map(({ link, text, _key }: any) => (
