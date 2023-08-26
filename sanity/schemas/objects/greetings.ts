@@ -6,13 +6,6 @@ export default defineType({
   name: "greetings",
   type: "object",
   icon: BookIcon,
-  fieldsets: [
-    {
-      name: "cta",
-      title: "Call to Action",
-      hidden: ({ parent }: any) => parent?.layoutType != "3",
-    },
-  ],
   fields: [
     {
       title: "Layout Type",
@@ -49,16 +42,14 @@ export default defineType({
       hidden: ({ parent }: any) => parent?.layoutType === "3",
     },
     {
-      name: "text",
-      type: "string",
-      title: "Text",
-      fieldset: "cta",
-    },
-    {
-      name: "link",
-      type: "string",
-      title: "Link",
-      fieldset: "cta",
+      name: "cta",
+      type: "object",
+      title: "Call to Action",
+      fields: [
+        { name: "text", title: "Text", type: "string" },
+        { name: "link", title: "Link", type: "string" },
+      ],
+      hidden: ({ parent }: any) => parent?.layoutType != "3",
     },
     {
       name: "image",

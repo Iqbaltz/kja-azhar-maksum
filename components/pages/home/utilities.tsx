@@ -6,7 +6,11 @@ import {
 } from "@/components/common/shapes";
 import { Button } from "@/components/common/button";
 
-export default function Utilities() {
+interface IUtilitiesProps {
+  data: any;
+}
+
+export default function Utilities({ data }: IUtilitiesProps) {
   return (
     <section className="py-20 2xl:py-40 text-white bg-bgprimary px-4 md:px-8 2xl:px-0">
       <div className="w-full max-w-[1080px] 2xl:max-w-[1280px] mx-auto">

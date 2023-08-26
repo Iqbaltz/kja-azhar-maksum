@@ -35,12 +35,12 @@ export default function Home(
           if (data.layoutType == "1") {
             return <Greetings data={data} key={data?._key} />;
           } else {
-            return <Accounting />;
+            return <Accounting data={data} key={data?._key} />;
           }
         case "features":
-          return <Utilities />;
+          return <Utilities data={data} key={data?._key} />;
         case "subscribe":
-          return <CTA />;
+          return <CTA data={data} key={data?._key} />;
         default:
           break;
       }

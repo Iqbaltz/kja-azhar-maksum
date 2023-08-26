@@ -1,9 +1,9 @@
 import { Button } from "@/components/common/button";
 import React from "react";
 
-type Props = {};
+type Props = { data: any };
 
-export default function Cta({}: Props) {
+export default function Cta({ data }: Props) {
   return (
     <section className="py-20 lg:py-40 px-4 md:px-8 2xl:px-0 bg-bgprimary text-white">
       <div className="mx-auto max-w-[1080px] 2xl:max-w-[1280px] text-center">
