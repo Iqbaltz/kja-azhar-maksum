@@ -1,8 +1,22 @@
-export default {
+import { defineField, defineType } from "sanity";
+
+export default defineType({
   name: "home",
   title: "Home",
   type: "document",
   fields: [
+    {
+      title: "Home SEO",
+      name: "seo",
+      type: "object",
+      fields: [
+        defineField({ name: "title", type: "internationalizedArrayString" }),
+        defineField({
+          name: "description",
+          type: "internationalizedArrayString",
+        }),
+      ],
+    },
     {
       name: "sections",
       title: "Sections",
@@ -35,4 +49,4 @@ export default {
       };
     },
   },
-};
+});

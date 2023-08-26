@@ -1,6 +1,7 @@
 import { BookIcon } from "@sanity/icons";
+import { defineField, defineType } from "sanity";
 
-export default {
+export default defineType({
   title: "Greetings",
   name: "greetings",
   type: "object",
@@ -28,7 +29,12 @@ export default {
       },
       initialValue: "1",
     },
-    { name: "title", type: "string", title: "Title" },
+    defineField({ name: "title", type: "string", title: "Title" }),
+    defineField({
+      name: "judul",
+      title: "Judul",
+      type: "internationalizedArrayString",
+    }),
     {
       name: "subtitle",
       type: "string",
@@ -63,4 +69,4 @@ export default {
       },
     },
   ],
-};
+});

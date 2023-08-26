@@ -8,6 +8,7 @@ import {
   service,
   subscribe,
 } from "./schemas/objects";
+import { seoType } from "./schemas/seoType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -23,5 +24,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     service,
     features,
     subscribe,
+
+    // gg
+    seoType,
   ],
 };
