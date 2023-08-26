@@ -32,18 +32,21 @@ export default function Home(
         case "hero":
           return <Hero data={data} key={data?._key} />;
         case "greetings":
-          return <Greetings data={data} key={data?._key} />;
+          if (data.layoutType == "1") {
+            return <Greetings data={data} key={data?._key} />;
+          } else {
+            return <Accounting />;
+          }
+        case "features":
+          return <Utilities />;
+        case "subscribe":
+          return <CTA />;
         default:
           break;
       }
     });
 
   return (
-    <>
-      {props?.home?.sections && renderComponents(props?.home?.sections)}
-      <Utilities />
-      <Accounting />
-      <CTA />
-    </>
+    <>{props?.home?.sections && renderComponents(props?.home?.sections)}</>
   );
 }
