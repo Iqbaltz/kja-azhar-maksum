@@ -25,8 +25,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export default function Home({
   home,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log("the props", home);
-
   const renderComponents = (sections: any) =>
     sections.map((data: any) => {
       switch (data?._type) {

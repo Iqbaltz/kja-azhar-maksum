@@ -4,6 +4,16 @@ export default defineType({
   name: "home",
   title: "Home",
   type: "document",
+  groups: [
+    {
+      name: "page",
+      title: "Page",
+    },
+    {
+      name: "seo",
+      title: "SEO",
+    },
+  ],
   fields: [
     {
       title: "Home SEO",
@@ -16,6 +26,7 @@ export default defineType({
           type: "internationalizedArrayString",
         }),
       ],
+      group: "seo",
     },
     {
       name: "sections",
@@ -39,6 +50,7 @@ export default defineType({
           type: "subscribe",
         },
       ],
+      group: "page",
     },
   ],
   preview: {

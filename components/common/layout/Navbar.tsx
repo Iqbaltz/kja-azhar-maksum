@@ -104,7 +104,7 @@ export default function Navbar() {
                   {languageList
                     .filter((lang) => lang != currLang)
                     .map((lang) => (
-                      <li>
+                      <li key={lang}>
                         <Link href={asPath} locale={lang}>
                           <p className="hover:bg-primary/50 cursor-pointer px-2 py-1">
                             {lang.toUpperCase()}

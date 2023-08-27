@@ -1,13 +1,18 @@
 import { BlockElementIcon, CircleIcon } from "@sanity/icons";
+import { defineType } from "sanity";
 
-export default {
+export default defineType({
   title: "Hero",
   name: "hero",
   type: "object",
   icon: BlockElementIcon,
   fields: [
-    { name: "title", type: "string", title: "Title" },
-    { name: "subtitle", type: "text", title: "Subtitle" },
+    { title: "Title", name: "title", type: "internationalizedArrayString" },
+    {
+      title: "Subtitle",
+      name: "subtitle",
+      type: "internationalizedArrayString",
+    },
     {
       name: "image",
       type: "image",
@@ -28,7 +33,7 @@ export default {
             {
               title: "Text",
               name: "text",
-              type: "string",
+              type: "internationalizedArrayString",
             },
             {
               title: "Link",
@@ -42,7 +47,7 @@ export default {
               subtitle: "link",
             },
             prepare: ({ title, subtitle }: any) => ({
-              title,
+              title: title[0].value,
               subtitle,
               media: CircleIcon,
             }),
@@ -51,4 +56,14 @@ export default {
       ],
     },
   ],
-};
+  preview: {
+    select: {
+      title: "title",
+      img: "image",
+    },
+    prepare: ({ title, img }: any) => ({
+      title: title[0].value,
+      media: img,
+    }),
+  },
+});
