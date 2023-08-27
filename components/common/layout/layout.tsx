@@ -23,7 +23,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <meta
           name="description"
           content="Menjadi Mitra Keuangan dan Akuntansi bagi Industri di Indonesia"
-          key="desc"
         />
       </Head>
       <Navbar />

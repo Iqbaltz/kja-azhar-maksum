@@ -1,9 +1,16 @@
 import { type SanityClient, groq } from "next-sanity";
 
-export const homePageQuery = groq`
-  *[_type == "home"][0]
+export const homePageQuery = (locale: string) => groq`
+
+  *[_type == "home"][0]{
+    sections,
+    "seo": {"title" : seo.title[_key == "${locale}"][0].value, "description":seo.description[_key == "${locale}"][0].value}
+  }
 `;
 
-export async function getHome(client: SanityClient): Promise<any> {
-  return await client.fetch(homePageQuery);
+export async function getHome(
+  client: SanityClient,
+  locale: string | undefined
+): Promise<any> {
+  return await client.fetch(homePageQuery(locale || "id"));
 }

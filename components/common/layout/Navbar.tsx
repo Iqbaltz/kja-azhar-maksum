@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "../button";
+import { useRouter } from "next/router";
 
 const menuList = [
   {
@@ -26,11 +27,15 @@ const menuList = [
   },
 ];
 
+const languageList = ["id", "en"];
+
 export default function Navbar() {
+  const { locale, asPath } = useRouter();
   const [openLang, setOpenLang] = useState<boolean>(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [scrollingDown, setScrollingDown] = useState(false);
+  const [currLang, setCurrLang] = useState<string>(locale || "id");
 
   const handleScroll = () => {
     if (typeof window !== "undefined") {
@@ -58,6 +63,10 @@ export default function Navbar() {
       };
     }
   }, [prevScrollPos]);
+
+  useEffect(() => {
+    setCurrLang(locale || "id");
+  }, [locale]);
   return (
     <>
       <header
@@ -83,17 +92,27 @@ export default function Navbar() {
                 onClick={() => setOpenLang(!openLang)}
                 className="flex items-center cursor-pointer px-2 py-1"
               >
-                <p>ID</p>
+                <p>{currLang.toUpperCase()}</p>
                 <img
                   src="/svg/chevron-down.svg"
                   className="w-[16px] ml-3"
                   alt="chevron-down"
                 />
               </div>
-              <div className="invisible group-hover:visible bg-secondary w-full absolute -bottom-full z-10">
-                <p className="hover:bg-primary/50 cursor-pointer px-2 py-1">
-                  EN
-                </p>
+              <div className="invisible group-hover:visible bg-secondary w-full absolute top-full z-10">
+                <ul>
+                  {languageList
+                    .filter((lang) => lang != currLang)
+                    .map((lang) => (
+                      <li>
+                        <Link href={asPath} locale={lang}>
+                          <p className="hover:bg-primary/50 cursor-pointer px-2 py-1">
+                            {lang.toUpperCase()}
+                          </p>
+                        </Link>
+                      </li>
+                    ))}
+                </ul>
               </div>
             </div>
             <div

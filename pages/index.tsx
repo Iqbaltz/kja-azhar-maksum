@@ -8,9 +8,10 @@ import {
 import { client } from "@/sanity/lib/client";
 import { getHome } from "@/sanity/lib/queries";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
+import Head from "next/head";
 
-export const getStaticProps: GetStaticProps<any> = async () => {
-  const home = await getHome(client);
+export const getStaticProps: GetStaticProps = async (context) => {
+  const home = await getHome(client, context?.locale);
 
   return {
     props: {
@@ -21,10 +22,10 @@ export const getStaticProps: GetStaticProps<any> = async () => {
   };
 };
 
-export default function Home(
-  props: InferGetStaticPropsType<typeof getStaticProps>
-) {
-  console.log("the props", props);
+export default function Home({
+  home,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  console.log("the props", home);
 
   const renderComponents = (sections: any) =>
     sections.map((data: any) => {
@@ -47,6 +48,12 @@ export default function Home(
     });
 
   return (
-    <>{props?.home?.sections && renderComponents(props?.home?.sections)}</>
+    <>
+      <Head>
+        <title>{home?.seo?.title}</title>
+        <meta name="description" content={home?.seo?.description} />
+      </Head>
+      {home?.sections && renderComponents(home?.sections)}
+    </>
   );
 }
