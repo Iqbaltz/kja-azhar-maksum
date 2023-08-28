@@ -27,6 +27,7 @@ export const myStructure = (S: any) =>
                 .child(S.document().schemaType("colors").documentId("colors")),
             ])
         ),
+      S.divider(),
       S.listItem()
         .title("Pages")
         .child(
@@ -45,6 +46,7 @@ export const myStructure = (S: any) =>
                 ),
             ])
         ),
+      S.divider(),
       ...S.documentTypeListItems().filter(
         (listItem: any) =>
           !["siteSettings", "colors", "home", "services", "pages"].includes(

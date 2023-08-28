@@ -8,7 +8,7 @@ import {
   service,
   subscribe,
 } from "./schemas/objects";
-import { seoType } from "./schemas/seoType";
+import blockContent from "./schemas/blockContent";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -25,7 +25,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     features,
     subscribe,
 
-    // gg
-    seoType,
+    // blockcontent
+    blockContent,
   ],
 };
