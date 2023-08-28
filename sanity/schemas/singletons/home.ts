@@ -28,7 +28,7 @@ export default defineType({
       ],
       group: "seo",
     },
-    {
+    defineField({
       name: "sections",
       title: "Sections",
       type: "array",
@@ -51,7 +51,10 @@ export default defineType({
         },
       ],
       group: "page",
-    },
+      options: {
+        sortable: false,
+      },
+    }),
   ],
   preview: {
     prepare() {
