@@ -6,23 +6,38 @@ import { useRouter } from "next/router";
 
 const menuList = [
   {
-    label: "Layanan",
+    label: {
+      id: "Layanan",
+      en: "Services",
+    },
     url: "/services",
   },
   {
-    label: "Pelatihan",
+    label: {
+      id: "Pelatihan",
+      en: "Training",
+    },
     url: "#",
   },
   {
-    label: "Tim Kami",
+    label: {
+      id: "Tim Kami",
+      en: "Our Team",
+    },
     url: "/team",
   },
   {
-    label: "Tentang",
+    label: {
+      id: "Tentang",
+      en: "About",
+    },
     url: "/about",
   },
   {
-    label: "Hubungi Kami",
+    label: {
+      id: "Hubungi Kami",
+      en: "Contact Us",
+    },
     url: "/contact",
   },
 ];
@@ -81,10 +96,16 @@ export default function Navbar() {
           <ul className="hidden lg:flex items-center">
             {menuList.map(({ label, url }, i) => (
               <Link className="mr-6" href={url} key={i}>
-                <li>{label}</li>
+                <li>
+                  {languageList.includes(locale || "id")
+                    ? label[(locale as "id") || "en"]
+                    : label["id"]}
+                </li>
               </Link>
             ))}
-            <Button className="ml-10">Registrasi Member</Button>
+            <Button className="ml-10">
+              {locale == "id" ? "Registrasi Member" : "Member Registration"}
+            </Button>
           </ul>
           <div className="flex items-center">
             <div className="relative group">
@@ -147,12 +168,16 @@ export default function Navbar() {
                 href={url}
                 onClick={() => setIsNavOpen(false)}
               >
-                {label}
+                {languageList.includes(locale || "id")
+                  ? label[(locale as "id") || "en"]
+                  : label["id"]}
               </Link>
             </li>
           ))}
           <li>
-            <Button>Registrasi Member</Button>
+            <Button>
+              {locale == "id" ? "Registrasi Member" : "Member Registration"}
+            </Button>
           </li>
         </ul>
       </nav>
