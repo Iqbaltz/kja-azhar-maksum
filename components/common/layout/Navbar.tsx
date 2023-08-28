@@ -42,7 +42,7 @@ const menuList = [
   },
 ];
 
-const languageList = ["id", "en"];
+export const languageList = ["id", "en"];
 
 export default function Navbar() {
   const { locale, asPath } = useRouter();
