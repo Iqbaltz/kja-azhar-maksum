@@ -9,29 +9,29 @@ export default {
     {
       name: "title",
       title: "Title",
-      type: "string",
+      type: "internationalizedArrayString",
     },
     {
       name: "subtitle",
       title: "Subtitle",
-      type: "text",
+      type: "internationalizedArrayText",
     },
     {
       name: "placeholder",
       title: "Input Placeholder",
-      type: "string",
+      type: "internationalizedArrayString",
     },
     {
       name: "buttonText",
       title: "Button Text",
-      type: "string",
+      type: "internationalizedArrayString",
     },
   ],
   preview: {
     select: { title: "title" },
     prepare({ title }: any) {
       return {
-        title: title,
+        title: title[0].value,
         media: EnvelopeIcon,
       };
     },

@@ -1,15 +1,23 @@
 import { TiersIcon } from "@sanity/icons";
+import { defineType } from "sanity";
 
-export default {
+export default defineType({
   title: "Features",
   name: "features",
   type: "object",
   icon: TiersIcon,
-  fieldsets: [{ name: "cta", title: "Call to Action" }],
   fields: [
-    { name: "title", type: "string", title: "Title" },
-    { name: "description1", type: "text", title: "Description 1" },
-    { name: "description2", type: "text", title: "Description 2" },
+    { name: "title", type: "internationalizedArrayString", title: "Title" },
+    {
+      name: "description1",
+      type: "internationalizedArrayText",
+      title: "Description 1",
+    },
+    {
+      name: "description2",
+      type: "internationalizedArrayText",
+      title: "Description 2",
+    },
     {
       name: "services",
       title: "Services",
@@ -17,16 +25,21 @@ export default {
       of: [{ title: "Service", type: "service" }],
     },
     {
-      name: "text",
-      title: "Text",
-      type: "string",
-      fieldset: "cta",
-    },
-    {
-      name: "link",
-      title: "Link",
-      type: "string",
-      fieldset: "cta",
+      name: "cta",
+      type: "object",
+      title: "Call to Action",
+      fields: [
+        {
+          name: "text",
+          title: "Text",
+          type: "internationalizedArrayString",
+        },
+        {
+          name: "link",
+          title: "Link",
+          type: "string",
+        },
+      ],
     },
   ],
   preview: {
@@ -35,9 +48,9 @@ export default {
     },
     prepare({ title }: any) {
       return {
-        title,
+        title: title[0].value,
         media: TiersIcon,
       };
     },
   },
-};
+});

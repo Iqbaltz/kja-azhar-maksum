@@ -1,5 +1,5 @@
 import { BookIcon } from "@sanity/icons";
-import { defineField, defineType } from "sanity";
+import { defineType } from "sanity";
 
 export default defineType({
   title: "Greetings",
@@ -22,22 +22,25 @@ export default defineType({
       },
       initialValue: "1",
     },
-    defineField({ name: "title", type: "string", title: "Title" }),
-    defineField({
-      name: "judul",
-      title: "Judul",
+    {
+      name: "title",
       type: "internationalizedArrayString",
-    }),
+      title: "Title",
+    },
     {
       name: "subtitle",
-      type: "string",
+      type: "internationalizedArrayString",
       title: "Subtitle",
       hidden: ({ parent }: any) => parent?.layoutType != "2",
     },
-    { name: "description1", type: "text", title: "Description 1" },
+    {
+      name: "description1",
+      type: "internationalizedArrayText",
+      title: "Description 1",
+    },
     {
       name: "description2",
-      type: "text",
+      type: "internationalizedArrayText",
       title: "Description 2",
       hidden: ({ parent }: any) => parent?.layoutType === "3",
     },
@@ -46,7 +49,7 @@ export default defineType({
       type: "object",
       title: "Call to Action",
       fields: [
-        { name: "text", title: "Text", type: "string" },
+        { name: "text", title: "Text", type: "internationalizedArrayString" },
         { name: "link", title: "Link", type: "string" },
       ],
       hidden: ({ parent }: any) => parent?.layoutType != "3",
@@ -60,4 +63,14 @@ export default defineType({
       },
     },
   ],
+  preview: {
+    select: {
+      title: "title",
+      img: "image",
+    },
+    prepare: ({ title, img }: any) => ({
+      title: title[0].value,
+      media: img,
+    }),
+  },
 });
