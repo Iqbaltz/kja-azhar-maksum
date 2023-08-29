@@ -12,9 +12,11 @@ export default function Accounting({ data }: Props) {
           <h1 className="questa text-4xl 2xl:text-5xl mb-8 lg:mb-12">
             {data?.title}
           </h1>
-          <p className="2xl:text-lg mb-8 lg:mb-12">{data?.description1}</p>
+          <p className="2xl:text-lg xl:text-sm !leading-relaxed mb-8 lg:mb-12">
+            {data?.description1}
+          </p>
           <a href={data?.cta?.link}>
-            <button className="flex items-center text-secondary hover:text-lightsecondary transition-colors duration-200 2xl:text-lg font-bold">
+            <button className="flex items-center text-secondary hover:text-lightsecondary transition-colors duration-200 2xl:text-lg xl:text-sm !leading-relaxed tracking-widest font-bold">
               {data?.cta?.text}
               <img
                 src="/svg/chevron-right.svg"

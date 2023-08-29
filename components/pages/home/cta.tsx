@@ -10,7 +10,7 @@ export default function Cta({ data }: Props) {
         <h1 className="text-5xl lg:text-6xl 2xl:text-7xl questa mb-12">
           {data?.title}
         </h1>
-        <p className="2xl:text-lg mb-12 max-w-[960px] mx-auto">
+        <p className="2xl:text-lg xl:text-sm !leading-relaxed mb-12 2xl:max-w-[960px] max-w-[740px] mx-auto">
           {data?.subtitle}
         </p>
         <div className="flex justify-center">

@@ -14,12 +14,16 @@ export default function Greetings({ data }: Props) {
             alt="businessman"
           />
         </div>
-        <div className="lg:order-2 lg:ml-20 lg:w-1/2">
+        <div className="lg:order-2 lg:ml-16 lg:w-1/2">
           <h1 className="questa text-4xl 2xl:text-5xl mb-6 xl:mb-12 max-w-[400px] 2xl:max-w-[480px]">
             {data?.title}
           </h1>
-          <p className="mb-4 2xl:text-lg">{data?.description1}</p>
-          <p className="2xl:text-lg">{data?.description2}</p>
+          <p className="mb-4 2xl:text-lg xl:text-sm !leading-relaxed">
+            {data?.description1}
+          </p>
+          <p className="2xl:text-lg xl:text-sm !leading-relaxed">
+            {data?.description2}
+          </p>
         </div>
       </div>
     </section>

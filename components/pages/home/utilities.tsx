@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  CalculatorIcon,
-  HandCash,
-  WithdrawCash,
-} from "@/components/common/shapes";
 import { Button } from "@/components/common/button";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { urlForImage } from "@/sanity/lib/image";
 
 interface IUtilitiesProps {
   data: any;
@@ -32,7 +28,7 @@ export default function Utilities({ data }: IUtilitiesProps) {
   }
 
   return (
-    <section className="py-20 2xl:py-40 text-white bg-bgprimary px-4 md:px-8 2xl:px-0">
+    <section className="py-20 xl:py-32 2xl:py-40 text-white bg-bgprimary px-4 md:px-8 2xl:px-0">
       <div className="w-full max-w-[1080px] 2xl:max-w-[1280px] mx-auto">
         <div className="flex flex-col lg:flex-row lg:justfiy-between mb-12 lg:mb-20">
           <div className="mb-8 lg:mb-0 lg:w-1/2">
@@ -40,7 +36,7 @@ export default function Utilities({ data }: IUtilitiesProps) {
               {data?.title}
             </h1>
           </div>
-          <div className="lg:w-1/2 lg:ml-20 2xl:text-lg">
+          <div className="lg:w-1/2 lg:ml-16 2xl:text-lg xl:text-sm !leading-relaxed">
             <p className="mb-6">{data?.description1}</p>
             <p>{data?.description2}</p>
           </div>
@@ -51,11 +47,17 @@ export default function Utilities({ data }: IUtilitiesProps) {
               className="group  px-8 py-12 lg:px-12 lg:py-16 bg-white hover:text-white hover:bg-primary transition-colors duration-300"
               key={item?._key}
             >
-              <CalculatorIcon className="fill-black group-hover:fill-white transition-colors duration-300" />
+              <img
+                src={urlForImage(item?.image).url()}
+                className="xl:w-12 2xl:w-auto group-hover:invert transition-filter duration-300"
+                alt={item.title}
+              />
               <h1 className="questa text-2xl 2xl:text-3xl my-6">
                 {item.title}
               </h1>
-              <p className="2xl:text-lg">{item.description}</p>
+              <p className="2xl:text-lg xl:text-sm !leading-relaxed">
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
