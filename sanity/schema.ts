@@ -9,10 +9,12 @@ import {
   subscribe,
 } from "./schemas/objects";
 import blockContent from "./schemas/blockContent";
+import authors from "./schemas/authors";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     news,
+    authors,
     // singletons
     siteSettings,
     colors,

@@ -1,3 +1,4 @@
+import { DocumentsIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 // schemas/siteSettings.js
@@ -5,11 +6,13 @@ export default defineType({
   name: "news",
   title: "News",
   type: "document",
+  icon: DocumentsIcon,
   fields: [
     {
       name: "title",
       title: "Title",
       type: "string",
+      validation: (rule: any) => rule.required(),
     },
     {
       name: "slug",
@@ -19,6 +22,15 @@ export default defineType({
         source: "title",
       },
       validation: (rule: any) => rule.required(),
+    },
+    {
+      name: "author",
+      title: "Author",
+      type: "reference",
+      to: [{ type: "authors" }],
+      options: {
+        disableNew: true,
+      },
     },
     {
       name: "excerpt",
@@ -32,11 +44,13 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      validation: (rule: any) => rule.required(),
     },
     {
       name: "body",
       title: "Body",
       type: "blockContent",
+      validation: (rule: any) => rule.required(),
     },
   ],
   preview: {
