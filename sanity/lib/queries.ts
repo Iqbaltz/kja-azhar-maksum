@@ -51,9 +51,29 @@ export const homePageQuery = (locale: string) => groq`
   }
 `;
 
+const newsQuery = groq`
+  *[_type == "news"]
+`;
+
+const simpleNewsQuery = groq`
+*[_type == "news"][0...4] | order(_createdAt desc) {
+  title,
+  excerpt,
+  "slug": slug.current,
+  _createdAt
+}
+`;
+
 export async function getHome(
   client: SanityClient,
   locale: string | undefined
 ): Promise<any> {
   return await client.fetch(homePageQuery(locale || "id"));
+}
+export async function getNews(client: SanityClient): Promise<any> {
+  return await client.fetch(newsQuery);
+}
+
+export async function getSimpleNews(client: SanityClient): Promise<any> {
+  return await client.fetch(simpleNewsQuery);
 }

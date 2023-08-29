@@ -65,7 +65,7 @@ export default function Services() {
             Berbagai Spesialisasi di Bidang Akuntansi, Pelaporan Keuangan dan
             Perpajakan
           </h1>
-          <div className="lg:w-1/2 lg:ml-20">
+          <div className="lg:w-1/2 lg:ml-16 2xl:text-lg">
             <p className="mb-6">
               Kami menyediakan berbagai jasa akuntan yang terpercaya dengan
               menerapkan prinsip akuntansi secara umum. Dengan menggunakan
