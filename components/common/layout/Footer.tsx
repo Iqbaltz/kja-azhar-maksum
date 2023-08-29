@@ -123,8 +123,11 @@ export default function Footer() {
                   {locale == "id" ? "Sumber" : "Source"}
                 </h3>
                 <ul>
-                  {resourceList.map(({ label, url }) => (
-                    <li className="mb-3 opacity-60 hover:opacity-100 transition-opacity duration-200">
+                  {resourceList.map(({ label, url }, i) => (
+                    <li
+                      className="mb-3 opacity-60 hover:opacity-100 transition-opacity duration-200"
+                      key={i}
+                    >
                       <a href={url}>
                         {languageList.includes(locale || "id")
                           ? label[(locale as "id") || "en"]

@@ -32,8 +32,6 @@ export default function Newsletter() {
     setNews(res);
   };
 
-  console.log(news);
-
   useEffect(() => {
     fetchNews();
   }, []);
@@ -44,7 +42,7 @@ export default function Newsletter() {
         <h1 className="questa text-4xl lg:text-5xl text-center mb-16">
           Berita Terbaru
         </h1>
-        <div className="grid grid-cols-2 2xl:grid-cols-4 gap-4 md:gap-5">
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 md:gap-5">
           {news?.map(({ title, _createdAt, slug }, i) => (
             <NewsletterCard
               releaseAt={_createdAt}
@@ -75,7 +73,7 @@ function NewsletterCard({ releaseAt, title, slug }: INewsletterCard) {
           day: "numeric",
         })}
       </p>
-      <h1 className="my-3 text-xl lg:text-2xl questa">{title}</h1>
+      <h1 className="my-3 text-xl 2xl:text-2xl questa">{title}</h1>
       <Link href={`/news/${slug}`}>
         <Button variant="secondary">Selengkapnya</Button>
       </Link>

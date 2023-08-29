@@ -6,7 +6,7 @@ type Props = { data: any };
 
 export default function Hero({ data }: Props) {
   return (
-    <div className="relative overflow-hidden flex items-center text-white bg-bgprimary w-full h-[100vh] px-4 md:px-8 2xl:px-0">
+    <div className="relative pt-[40px] overflow-hidden flex items-center text-white bg-bgprimary w-full h-[100vh] px-4 md:px-8 2xl:px-0">
       <img
         src={urlForImage(data?.image).url()}
         alt="bg-hero"

@@ -51,6 +51,10 @@ export const homePageQuery = (locale: string) => groq`
   }
 `;
 
+const newsPathsQuery = groq`
+ *[_type == "news"]{slug}
+`;
+
 const newsQuery = groq`
   *[_type == "news"]
 `;
@@ -76,4 +80,26 @@ export async function getNews(client: SanityClient): Promise<any> {
 
 export async function getSimpleNews(client: SanityClient): Promise<any> {
   return await client.fetch(simpleNewsQuery);
+}
+
+export async function getNewsPaths(client: SanityClient): Promise<any> {
+  const items = await client.fetch(newsPathsQuery);
+  const paths = items.map((item: any) => {
+    return {
+      params: { slug: item.slug.current },
+    };
+  });
+  return paths;
+}
+
+export async function getNewsBySlug(
+  client: SanityClient,
+  slug: string
+): Promise<any> {
+  const items = await client.fetch(
+    `*[_type == "news" && slug.current == "${slug}"]{
+      ..., author->
+    }`
+  );
+  return items[0];
 }

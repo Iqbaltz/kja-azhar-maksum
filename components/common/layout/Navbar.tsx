@@ -85,7 +85,7 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`bg-primary fixed top-0 text-white w-full py-4 z-50 ${
+        className={`bg-primary fixed top-0 text-white w-full py-3 z-50 ${
           scrollingDown ? "-translate-y-full opacity-0" : ""
         } transition-all duration-300 delay-75`}
       >
