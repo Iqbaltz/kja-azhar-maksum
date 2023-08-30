@@ -6,10 +6,10 @@ export default function ContactInfo() {
           <div className="flex justify-center items-center h-[56px]">
             <img src="/svg/phone.svg" alt="phone" />
           </div>
-          <h2 className="questa text-3xl lg:text-4xl 2xl:text-5xl my-4 lg:my-5">
+          <h2 className="questa text-3xl 2xl:text-4xl my-4 lg:my-5">
             No. Kontak
           </h2>
-          <p className="lg:text-lg opacity-60 max-w-[320px] mx-auto">
+          <p className="xl:text-sm 2xl:text-lg opacity-60 max-w-[320px] mx-auto">
             +62 813 6205 8121 (Ibnu Austrin)
           </p>
         </div>
@@ -17,10 +17,10 @@ export default function ContactInfo() {
           <div className="flex justify-center items-center h-[56px]">
             <img src="/svg/location.svg" alt="location" />
           </div>
-          <h2 className="questa text-3xl lg:text-4xl 2xl:text-5xl my-4 lg:my-5">
+          <h2 className="questa text-3xl 2xl:text-4xl my-4 lg:my-5">
             Lokasi Kami
           </h2>
-          <p className="lg:text-lg opacity-60 max-w-[320px] mx-auto">
+          <p className="xl:text-sm 2xl:text-lg opacity-60 max-w-[320px] mx-auto">
             Jl. Karya Wisata Komp. Perumahan Dosen Ekonomi Universitas Sumatera
             Utara Gedung Johor, Medan
           </p>
@@ -29,10 +29,8 @@ export default function ContactInfo() {
           <div className="flex justify-center items-center h-[56px]">
             <img src="/svg/mail.svg" alt="mail" />
           </div>
-          <h2 className="questa text-3xl lg:text-4xl 2xl:text-5xl my-4 lg:my-5">
-            Email
-          </h2>
-          <p className="lg:text-lg opacity-60 max-w-[320px] mx-auto">
+          <h2 className="questa text-3xl 2xl:text-4xl my-4 lg:my-5">Email</h2>
+          <p className="xl:text-sm 2xl:text-lg opacity-60 max-w-[320px] mx-auto">
             kjaazharmaksumdanrekan@gmail.com
           </p>
         </div>

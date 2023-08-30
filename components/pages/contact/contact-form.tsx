@@ -2,11 +2,11 @@ import { Button } from "@/components/common/button";
 
 export default function ContactForm() {
   return (
-    <section className="text-center py-20 lg:py-40 mx-auto max-w-[1080px] 2xl:max-w-[1280px] px-4 md:px-8 2xl:px-0">
-      <h1 className="questa text-4xl lg:text-5xl 2xl:text-6xl mb-6 lg:mb-8">
+    <section className="text-center py-20 xl:py-32 2xl:py-40 mx-auto max-w-[1080px] 2xl:max-w-[1280px] px-4 md:px-8 2xl:px-0">
+      <h1 className="questa text-4xl 2xl:text-5xl mb-6 lg:mb-8">
         Isi Formulir Disini
       </h1>
-      <p className="mb-7 lg:mb-8 max-w-[800px] lg:max-w-[920px] mx-auto lg:text-lg">
+      <p className="mb-7 lg:mb-10 max-w-[720px] 2xl:max-w-[920px] mx-auto xl:text-sm 2xl:text-lg">
         Isi data anda dan perusahaan di bawah ini untuk pelayanan konsultasi
         akuntansi dan keuangan. Kami akan segera menghubungi anda dan memberikan
         solusi terbaik.
