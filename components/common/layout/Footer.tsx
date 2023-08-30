@@ -71,7 +71,7 @@ export default function Footer() {
   return (
     <footer className="bg-primary text-white py-20 px-4 lg:px-0">
       <div className="mx-auto max-w-[1080px] 2xl:max-w-[1280px]">
-        <div className="flex flex-col lg:flex-row justify-between text-lg mb-8 lg:mb-4">
+        <div className="flex flex-col lg:flex-row justify-between 2xl:text-lg mb-8 lg:mb-4">
           <div className="lg:w-2/3 flex flex-col lg:flex-row justify-between">
             <div className="lg:max-w-[50%]">
               <div className="mb-6 lg:mb-12">

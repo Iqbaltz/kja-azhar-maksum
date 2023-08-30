@@ -4,26 +4,6 @@ import { getSimpleNews } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link";
 
-const newsList = [
-  {
-    releaseAt: "May 15, 2023",
-    title:
-      "Kelola Masalah Keuangan Berikut, Sukses Membangun Perusahaan Startup",
-  },
-  {
-    releaseAt: "May 8, 2023 ",
-    title: "Lima Aplikasi Akuntansi Online yang Banyak Digunakan",
-  },
-  {
-    releaseAt: "April 20, 2023",
-    title: "Panduan Ringkas Tata Kelola Laporan Keuangan Entitas",
-  },
-  {
-    releaseAt: "April 18, 2023",
-    title: "Aplikasi Akuntansi Online Untuk Manajemen Keuangan",
-  },
-];
-
 export default function Newsletter() {
   const [news, setNews] = useState<any[]>();
 
@@ -37,9 +17,9 @@ export default function Newsletter() {
   }, []);
 
   return (
-    <section className="bg-bglight py-20 lg:py-32 px-4 md:px-8 2xl:px-0">
+    <section className="bg-bglight py-20 xl:py-28 2xl:py-32 px-4 md:px-8 2xl:px-0">
       <div className="w-full max-w-[1080px] 2xl:max-w-[1280px] mx-auto">
-        <h1 className="questa text-4xl lg:text-5xl text-center mb-16">
+        <h1 className="questa text-4xl 2xl:text-5xl text-center mb-16">
           Berita Terbaru
         </h1>
         <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 md:gap-5">

@@ -13,7 +13,7 @@ export default function Hero({ data }: Props) {
         className="absolute w-full h-full object-cover mix-blend-multiply"
       />
       <div className="z-10 w-full max-w-[1080px] 2xl:max-w-[1280px] mx-auto">
-        <h1 className="questa text-5xl lg:text-[56px] 2xl:text-7xl max-w-[640px] 2xl:max-w-[800px]">
+        <h1 className="questa text-4xl lg:text-5xl 2xl:text-6xl max-w-[560px] 2xl:max-w-[720px]">
           {data?.title}
         </h1>
         <p className="lg:text-lg 2xl:text-2xl my-12 2xl:my-16 max-w-[600px] 2xl:max-w-[800px]">

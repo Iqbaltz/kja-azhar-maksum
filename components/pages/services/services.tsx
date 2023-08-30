@@ -58,14 +58,16 @@ const servicesList = [
 
 export default function Services() {
   return (
-    <section className="py-20 lg:py-40 px-4 md:px-8 2xl:px-0">
+    <section className="py-20 xl:py-32 2xl:py-40 px-4 md:px-8 2xl:px-0">
       <div className="w-full max-w-[1080px] 2xl:max-w-[1280px] mx-auto">
         <div className="flex flex-col lg:flex-row justify-between">
-          <h1 className="mb-8 lg:mb-0 text-4xl lg:text-5xl questa lg:w-1/2 max-w-[520px]">
-            Berbagai Spesialisasi di Bidang Akuntansi, Pelaporan Keuangan dan
-            Perpajakan
-          </h1>
-          <div className="lg:w-1/2 lg:ml-16 2xl:text-lg">
+          <div className="mb-8 lg:mb-0 lg:w-1/2">
+            <h1 className="questa text-4xl 2xl:text-5xl max-w-[380px] 2xl:max-w-[520px]">
+              Berbagai Spesialisasi di Bidang Akuntansi, Pelaporan Keuangan dan
+              Perpajakan
+            </h1>
+          </div>
+          <div className="lg:w-1/2 lg:ml-16 2xl:text-lg xl:text-sm !leading-relaxed">
             <p className="mb-6">
               Kami menyediakan berbagai jasa akuntan yang terpercaya dengan
               menerapkan prinsip akuntansi secara umum. Dengan menggunakan
@@ -80,7 +82,7 @@ export default function Services() {
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mt-12 lg:mt-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12 xl:mt-20 2xl:mt-24">
           {servicesList.map(({ icon, title, desc }, i) => (
             <div
               className="group bg-lightgrey px-6 lg:px-8 py-12 lg:py-16 hover:text-white hover:bg-primary transition-colors duration-300"
@@ -90,10 +92,10 @@ export default function Services() {
                 className:
                   "fill-black group-hover:fill-white transition-colors duration-300",
               })}
-              <h1 className="questa text-2xl lg:text-3xl my-4 lg:my-8">
+              <h1 className="questa text-2xl 2xl:text-3xl my-4 lg:my-8">
                 {title}
               </h1>
-              <p className="lg:text-lg">{desc}</p>
+              <p className="2xl:text-lg xl:text-sm !leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>

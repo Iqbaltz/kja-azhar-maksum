@@ -18,14 +18,14 @@ export default function Bio() {
           <h2 className="questa text-xl lg:text-2xl mb-12">
             Pimpinan / Direktur
           </h2>
-          <p className="mb-4 lg:text-lg">
+          <p className="mb-4 2xl:text-lg">
             Setelah lulus dengan gelar Master di bidang Economics in Accounting
             dari Macquarie University, Sydney dan gelar Doktor di bidang
             Philosophy in Accounting dari Universitas Sains Malaysia, beliau
             saat ini mengabdikan dirinya sebagai dosen sekaligus Guru Besar di
             Universitas Sumatera Utara.
           </p>
-          <p className="text-lg">
+          <p className="2xl:text-lg">
             Pendirian Kantor Jasa Akuntansi ini didasari oleh keinginan untuk
             mewujudkan transparansi dan akuntabilitas seluruh entitas yang ada
             di Indonesia. Kantor ini terdaftar dan mendapatkan izin dari
