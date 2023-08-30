@@ -12,20 +12,20 @@ export default function Bio() {
           />
         </div>
         <div className="lg:ml-16 lg:w-1/2">
-          <h1 className="questa text-4xl lg:text-5xl mb-4 max-w-[640px]">
+          <h1 className="questa mb-4 text-4xl 2xl:text-5xl max-w-[440px] 2xl:max-w-[600px]">
             Prof. Dr. H. Azhar Maksum, M.Ec. Ak. CA. CMA{" "}
           </h1>
-          <h2 className="questa text-xl lg:text-2xl mb-12">
+          <h2 className="questa text-xl 2xl:text-2xl mb-12">
             Pimpinan / Direktur
           </h2>
-          <p className="mb-4 2xl:text-lg">
+          <p className="mb-4 2xl:text-lg xl:text-sm !leading-relaxed">
             Setelah lulus dengan gelar Master di bidang Economics in Accounting
             dari Macquarie University, Sydney dan gelar Doktor di bidang
             Philosophy in Accounting dari Universitas Sains Malaysia, beliau
             saat ini mengabdikan dirinya sebagai dosen sekaligus Guru Besar di
             Universitas Sumatera Utara.
           </p>
-          <p className="2xl:text-lg">
+          <p className="2xl:text-lg xl:text-sm !leading-relaxed">
             Pendirian Kantor Jasa Akuntansi ini didasari oleh keinginan untuk
             mewujudkan transparansi dan akuntabilitas seluruh entitas yang ada
             di Indonesia. Kantor ini terdaftar dan mendapatkan izin dari

@@ -43,8 +43,8 @@ function TeamCard({ img, name, jobtitle }: ITeamCard) {
   return (
     <div>
       <img className="bg-lightgrey w-full" src={img} alt={name} />
-      <h1 className="questa text-xl mt-6 mb-4">{name}</h1>
-      <p>{jobtitle}</p>
+      <h1 className="questa text-xl mt-6 mb-2">{name}</h1>
+      <p className="2xl:text-base xl:text-sm ">{jobtitle}</p>
     </div>
   );
 }
