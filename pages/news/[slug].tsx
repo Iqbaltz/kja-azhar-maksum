@@ -1,7 +1,9 @@
 import { Hero } from "@/components/common/hero";
 import { Newsletter } from "@/components/common/newsletter";
 import { client } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
 import { getNewsBySlug, getNewsPaths } from "@/sanity/lib/queries";
+import { PortableText } from "@portabletext/react";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import React from "react";
 
@@ -49,6 +51,7 @@ export default function NewsPage({
   return (
     <>
       <Hero
+        bgSrc={urlForImage(news?.mainImage).url()}
         title={news?.title}
         subtitle={`Diterbitkan oleh ${news?.author?.name}. ${new Date(
           news._createdAt
@@ -57,7 +60,13 @@ export default function NewsPage({
           month: "long",
           year: "numeric",
         })}`}
+        isNews
       />
+      <section className="w-full max-w-[1080px] 2xl:max-w-[1280px] mx-auto py-24 2xl:py-32">
+        <div className="max-w-[744px]">
+          <PortableText value={news?.body} />
+        </div>
+      </section>
       <Newsletter />
     </>
   );
