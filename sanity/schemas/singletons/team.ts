@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "services",
-  title: "Layanan",
+  name: "team",
+  title: "Team",
   type: "document",
   groups: [
     {
@@ -16,8 +16,8 @@ export default defineType({
   ],
   fields: [
     {
-      title: "Service SEO",
-      name: "serviceSeo",
+      title: "Team SEO",
+      name: "teamSeo",
       type: "object",
       fields: [
         defineField({ name: "title", type: "internationalizedArrayString" }),
@@ -38,8 +38,12 @@ export default defineType({
           type: "hero",
         },
         {
-          title: "Features",
-          type: "features",
+          title: "Greetings",
+          type: "greetings",
+        },
+        {
+          title: "Team Section",
+          type: "teamSection",
         },
       ],
       group: "page",
@@ -51,8 +55,8 @@ export default defineType({
   preview: {
     prepare() {
       return {
-        title: "Content for Service Page",
-        subtitle: "Content for Service Page",
+        title: "Content for Team Page",
+        subtitle: "Content for Team Page",
       };
     },
   },

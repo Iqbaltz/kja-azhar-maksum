@@ -3,3 +3,7 @@ export { default as greetings } from "./greetings";
 export { default as service } from "./service";
 export { default as subscribe } from "./subscribe";
 export { default as hero } from "./hero";
+export { default as teamSection } from "./team-section";
+export { default as identitySection } from "./identity-section";
+export { default as contactForm } from "./contact-form";
+export { default as contactInfo } from "./contact-info";

@@ -16,6 +16,7 @@ export default defineType({
           { title: "Type 1", value: "1" },
           { title: "Type 2", value: "2" },
           { title: "Type 3", value: "3" },
+          { title: "Type 4", value: "4" },
         ],
         layout: "radio",
         direction: "horizontal",
@@ -26,6 +27,7 @@ export default defineType({
       name: "title",
       type: "internationalizedArrayString",
       title: "Title",
+      hidden: ({ parent }: any) => parent?.layoutType == "4",
     },
     {
       name: "subtitle",
@@ -66,10 +68,11 @@ export default defineType({
   preview: {
     select: {
       title: "title",
+      subtitle: "description1",
       img: "image",
     },
-    prepare: ({ title, img }: any) => ({
-      title: title[0].value,
+    prepare: ({ title, subtitle, img }: any) => ({
+      title: title?.[0]?.value || subtitle?.[0]?.value,
       media: img,
     }),
   },
