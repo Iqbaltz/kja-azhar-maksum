@@ -51,6 +51,25 @@ export const homePageQuery = (locale: string) => groq`
   }
 `;
 
+export const servicePageQuery = (locale: string) => groq`
+  *[_type == "services"][0]{
+    "sections": [
+      ...sections[_type == "hero"]{
+        ...,
+        "title": title[_key == "${locale}"][0].value,
+        "subtitle": subtitle[_key == "${locale}"][0].value,
+      },
+      ...sections[_type == "features"]{
+        ...,
+        "title": title[_key == "${locale}"][0].value,
+        "description1": description1[_key == "${locale}"][0].value,
+        "description2": description2[_key == "${locale}"][0].value,
+      },
+    ],
+    "serviceSeo": {"title" : serviceSeo.title[_key == "${locale}"][0].value, "description":serviceSeo.description[_key == "${locale}"][0].value}
+  }
+`;
+
 const newsPathsQuery = groq`
  *[_type == "news"]{slug}
 `;
@@ -66,13 +85,6 @@ const simpleNewsQuery = groq`
   "slug": slug.current,
   _createdAt
 }
-`;
-
-export const servicePageQuery = (locale: string) => groq`
-  *[_type == "services"][0]{
-    ...,
-    "serviceSeo": {"title" : serviceSeo.title[_key == "${locale}"][0].value, "description":serviceSeo.description[_key == "${locale}"][0].value}
-  }
 `;
 
 export async function getHome(
