@@ -1,6 +1,7 @@
 import { Layout } from "@/components/common/layout";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import Link from "next/link";
 import { lazy } from "react";
 
 const PreviewProvider = lazy(
@@ -22,8 +23,8 @@ export default function App({
     <>
       {draftMode ? (
         <PreviewProvider previewToken={token}>
-          <h1 className="opacity-70 fixed bottom-0 right-0 px-2 py-0.5 bg-black text-white z-50">
-            Preview
+          <h1 className="opacity-70 text-xl fixed bottom-0 right-0 px-3 py-1 bg-black text-white z-50">
+            <Link href="/api/exit-preview">Exit preview</Link>
           </h1>
           <Layout>
             <Component {...pageProps} />
