@@ -68,12 +68,26 @@ const simpleNewsQuery = groq`
 }
 `;
 
+export const servicePageQuery = (locale: string) => groq`
+  *[_type == "services"][0]{
+    ...,
+    "serviceSeo": {"title" : serviceSeo.title[_key == "${locale}"][0].value, "description":serviceSeo.description[_key == "${locale}"][0].value}
+  }
+`;
+
 export async function getHome(
   client: SanityClient,
   locale: string | undefined
 ): Promise<any> {
   return await client.fetch(homePageQuery(locale || "id"));
 }
+export async function getServicePage(
+  client: SanityClient,
+  locale: string | undefined
+): Promise<any> {
+  return await client.fetch(servicePageQuery(locale || "id"));
+}
+
 export async function getNews(client: SanityClient): Promise<any> {
   return await client.fetch(newsQuery);
 }

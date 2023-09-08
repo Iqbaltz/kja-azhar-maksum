@@ -5,26 +5,36 @@ import {
   Hero,
   Utilities,
 } from "@/components/pages/home";
-import { client } from "@/sanity/lib/client";
-import { getHome } from "@/sanity/lib/queries";
+import { readToken } from "@/sanity/env";
+import { client, getClient } from "@/sanity/lib/client";
+import { getHome, homePageQuery } from "@/sanity/lib/queries";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";
+import { useLiveQuery } from "@sanity/preview-kit";
+import { useRouter } from "next/router";
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const home = await getHome(client, context?.locale);
+export const getStaticProps: GetStaticProps = async ({
+  draftMode = false,
+  locale,
+}) => {
+  const client = getClient(draftMode ? { token: readToken } : undefined);
+  const homeData = await getHome(client, locale);
 
   return {
     props: {
-      // draftMode,
-      // token: draftMode ? readToken : '',
-      home,
+      draftMode: draftMode,
+      token: draftMode ? readToken : "",
+      homeData,
     },
   };
 };
 
 export default function Home({
-  home,
+  homeData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { locale } = useRouter();
+  const [home] = useLiveQuery(homeData, homePageQuery(locale || "id"));
+
   const renderComponents = (sections: any) =>
     sections.map((data: any) => {
       switch (data?._type) {
