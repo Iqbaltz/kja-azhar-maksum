@@ -7,6 +7,9 @@ import {
   PhoneCard,
   WithdrawCash,
 } from "@/components/common/shapes";
+import { useRouter } from "next/router";
+import { urlForImage } from "@/sanity/lib/image";
+import { filterLocalizedService } from "@/lib/helper";
 
 const servicesList = [
   {
@@ -56,48 +59,54 @@ const servicesList = [
   },
 ];
 
-export default function Services() {
+interface IServicesProps {
+  data: {
+    title: string;
+    description1: string;
+    description2: string;
+    services: any;
+    _key: string;
+    _type: string;
+  };
+}
+
+export default function Services({ data }: IServicesProps) {
+  const { locale } = useRouter();
   return (
     <section className="py-20 xl:py-32 2xl:py-40 px-4 md:px-8 2xl:px-0">
       <div className="w-full max-w-[1080px] 2xl:max-w-[1280px] mx-auto">
         <div className="flex flex-col lg:flex-row justify-between">
           <div className="mb-8 lg:mb-0 lg:w-1/2">
             <h1 className="questa text-4xl 2xl:text-5xl max-w-[380px] 2xl:max-w-[520px]">
-              Berbagai Spesialisasi di Bidang Akuntansi, Pelaporan Keuangan dan
-              Perpajakan
+              {data?.title}
             </h1>
           </div>
           <div className="lg:w-1/2 lg:ml-16 2xl:text-lg xl:text-sm !leading-relaxed">
-            <p className="mb-6">
-              Kami menyediakan berbagai jasa akuntan yang terpercaya dengan
-              menerapkan prinsip akuntansi secara umum. Dengan menggunakan
-              layanan jasa akuntan Azhar Maksum dan Rekan, anda akan memperoleh
-              keuntungan pencatatan transaksi keuangan yang dapat dipantau
-              secara real-time.
-            </p>
-            <p>
-              Selain itu, kami juga melakukan pengecekan terhadap pajak yang
-              terjadi atas transaksi keuangan sehingga dapat meminimalisir denda
-              pajak.
-            </p>
+            <p className="mb-6">{data?.description1}</p>
+            <p>{data?.description2}</p>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12 xl:mt-20 2xl:mt-24">
-          {servicesList.map(({ icon, title, desc }, i) => (
-            <div
-              className="group bg-lightgrey px-6 lg:px-8 py-12 lg:py-16 hover:text-white hover:bg-primary transition-colors duration-300"
-              key={i}
-            >
-              {React.cloneElement(icon, {
-                className:
-                  "fill-black group-hover:fill-white transition-colors duration-300",
-              })}
-              <h1 className="questa text-2xl 2xl:text-3xl my-4 lg:my-8">
-                {title}
-              </h1>
-              <p className="2xl:text-lg xl:text-sm !leading-relaxed">{desc}</p>
-            </div>
-          ))}
+          {filterLocalizedService(data?.services, locale || "id").map(
+            ({ _key, description, image, title }) => (
+              <div
+                className="group bg-lightgrey px-6 lg:px-8 py-12 lg:py-16 hover:text-white hover:bg-primary transition-colors duration-300"
+                key={_key}
+              >
+                <img
+                  src={urlForImage(image).url()}
+                  className="xl:w-12 2xl:w-auto group-hover:invert transition-filter duration-300"
+                  alt={title}
+                />
+                <h1 className="questa text-2xl 2xl:text-3xl my-4 lg:my-8">
+                  {title}
+                </h1>
+                <p className="2xl:text-lg xl:text-sm !leading-relaxed">
+                  {description}
+                </p>
+              </div>
+            )
+          )}
         </div>
       </div>
     </section>

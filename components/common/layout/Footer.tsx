@@ -78,7 +78,7 @@ export default function Footer() {
                 <h3 className="mb-4 text-xl 2xl:text-2xl">
                   {locale == "id" ? "Kantor Pusat" : "Head Office"}
                 </h3>
-                <address className="opacity-60">
+                <address className="opacity-60 not-italic">
                   Jl. Karya Wisata, Komplek Perumahan Dosen Ekonomi Universitas
                   Sumatera Utara No. 21 Kel. Gedung Johor, Medan 20144
                 </address>

@@ -51,6 +51,25 @@ export const homePageQuery = (locale: string) => groq`
   }
 `;
 
+export const servicePageQuery = (locale: string) => groq`
+  *[_type == "services"][0]{
+    "sections": [
+      ...sections[_type == "hero"]{
+        ...,
+        "title": title[_key == "${locale}"][0].value,
+        "subtitle": subtitle[_key == "${locale}"][0].value,
+      },
+      ...sections[_type == "features"]{
+        ...,
+        "title": title[_key == "${locale}"][0].value,
+        "description1": description1[_key == "${locale}"][0].value,
+        "description2": description2[_key == "${locale}"][0].value,
+      },
+    ],
+    "serviceSeo": {"title" : serviceSeo.title[_key == "${locale}"][0].value, "description":serviceSeo.description[_key == "${locale}"][0].value}
+  }
+`;
+
 const newsPathsQuery = groq`
  *[_type == "news"]{slug}
 `;
@@ -74,6 +93,13 @@ export async function getHome(
 ): Promise<any> {
   return await client.fetch(homePageQuery(locale || "id"));
 }
+export async function getServicePage(
+  client: SanityClient,
+  locale: string | undefined
+): Promise<any> {
+  return await client.fetch(servicePageQuery(locale || "id"));
+}
+
 export async function getNews(client: SanityClient): Promise<any> {
   return await client.fetch(newsQuery);
 }
