@@ -1,15 +1,19 @@
 import { Button } from "@/components/common/button";
 
-export default function ContactForm() {
+interface IContactFormProps {
+  data: {
+    title: string;
+    subtitle: string;
+  };
+}
+export default function ContactForm({
+  data: { title, subtitle },
+}: IContactFormProps) {
   return (
     <section className="text-center py-20 xl:py-32 2xl:py-40 mx-auto max-w-[1080px] 2xl:max-w-[1280px] px-4 md:px-8 2xl:px-0">
-      <h1 className="questa text-4xl 2xl:text-5xl mb-6 lg:mb-8">
-        Isi Formulir Disini
-      </h1>
+      <h1 className="questa text-4xl 2xl:text-5xl mb-6 lg:mb-8">{title}</h1>
       <p className="mb-7 lg:mb-10 max-w-[720px] 2xl:max-w-[920px] mx-auto xl:text-sm 2xl:text-lg">
-        Isi data anda dan perusahaan di bawah ini untuk pelayanan konsultasi
-        akuntansi dan keuangan. Kami akan segera menghubungi anda dan memberikan
-        solusi terbaik.
+        {subtitle}
       </p>
       <form>
         <div className="grid lg:grid-cols-2 gap-4 lg:gap-8 mb-4 lg:mb-7">
