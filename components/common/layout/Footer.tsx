@@ -78,7 +78,7 @@ export default function Footer() {
                 <h3 className="mb-4 text-xl 2xl:text-2xl">
                   {locale == "id" ? "Kantor Pusat" : "Head Office"}
                 </h3>
-                <address className="opacity-60 not-italic">
+                <address className="opacity-60 text-base xl:text-sm 2xl:text-lg not-italic">
                   Jl. Karya Wisata, Komplek Perumahan Dosen Ekonomi Universitas
                   Sumatera Utara No. 21 Kel. Gedung Johor, Medan 20144
                 </address>
@@ -87,7 +87,7 @@ export default function Footer() {
                 <h3 className="mb-4 text-xl 2xl:text-2xl">
                   {locale == "id" ? "Hubungi Kami" : "Contact Us"}
                 </h3>
-                <div className="opacity-60">
+                <div className="opacity-60 text-base xl:text-sm 2xl:text-lg">
                   <p>kjaazharmaksumdanrekan@gmail.com</p>
                   <p>+62 813 6205 8121</p>
                 </div>
@@ -101,7 +101,7 @@ export default function Footer() {
                 <ul>
                   {menuList?.map(({ label, url }, i) => (
                     <li
-                      className="mb-3 opacity-60 hover:opacity-100 transition-opacity duration-200"
+                      className="mb-3 opacity-60 text-base xl:text-sm 2xl:text-lg hover:opacity-100 transition-opacity duration-200"
                       key={i}
                     >
                       <a href={url}>
@@ -111,7 +111,7 @@ export default function Footer() {
                       </a>
                     </li>
                   ))}
-                  <li className="mb-3 opacity-60 hover:opacity-100 transition-opacity duration-200">
+                  <li className="mb-3 opacity-60 text-base xl:text-sm 2xl:text-lg hover:opacity-100 transition-opacity duration-200">
                     <a href="#">
                       {locale == "id" ? "Registrasi" : "Registration"}
                     </a>
@@ -125,7 +125,7 @@ export default function Footer() {
                 <ul>
                   {resourceList.map(({ label, url }, i) => (
                     <li
-                      className="mb-3 opacity-60 hover:opacity-100 transition-opacity duration-200"
+                      className="mb-3 opacity-60 text-base xl:text-sm 2xl:text-lg hover:opacity-100 transition-opacity duration-200"
                       key={i}
                     >
                       <a href={url}>

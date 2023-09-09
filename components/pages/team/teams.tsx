@@ -1,32 +1,26 @@
-const teamList = [
-  {
-    src: "/images/profile-1.png",
-    name: "Muhammad Karya Satya Azhar, SE. M.Si. Ak. CA. CPA",
-    jobtitle: "Rekan Akuntan",
-  },
-  {
-    src: "/images/profile-2.png",
-    name: "Angelia Pribadi, SE. M.Sc. Ak. CA. CTA",
-    jobtitle: "Rekan Akuntan",
-  },
-  {
-    src: "/images/profile-3.png",
-    name: "Wan Fachruddin, SE. M.Si. Ak. CA. CPA",
-    jobtitle: "Rekan Non Akuntan",
-  },
-  {
-    src: "/images/profile-4.png",
-    name: "Ibnu Austrindanney Sina Azhar, SE. M.Si. CPA",
-    jobtitle: "Rekan Non Akuntan",
-  },
-];
+import { urlForImage } from "@/sanity/lib/image";
 
-export default function Teams() {
+interface ITeamsProps {
+  data: {
+    teamList: {
+      name: string;
+      photo: any;
+      title: string;
+      _id: string;
+    }[];
+  };
+}
+export default function Teams({ data }: ITeamsProps) {
   return (
     <section className="py-16 lg:py-24 2xl:py-40 px-4 md:px-8 2xl:px-0">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 w-full max-w-[1080px] 2xl:max-w-[1280px] mx-auto">
-        {teamList.map(({ src, name, jobtitle }, i) => (
-          <TeamCard img={src} name={name} jobtitle={jobtitle} key={i} />
+        {data?.teamList.map(({ name, title, photo, _id }) => (
+          <TeamCard
+            img={urlForImage(photo).url()}
+            name={name}
+            jobtitle={title}
+            key={_id}
+          />
         ))}
       </div>
     </section>
