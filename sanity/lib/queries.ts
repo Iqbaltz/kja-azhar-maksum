@@ -70,6 +70,36 @@ export const servicePageQuery = (locale: string) => groq`
   }
 `;
 
+export const teamPageQuery = (locale: string) => groq`
+  *[_type == "team"][0]{
+    "sections":[
+      ...sections[_type == "hero"]{
+        ...,
+        "title": title[_key == "${locale}"][0].value,
+        "subtitle": subtitle[_key == "${locale}"][0].value,
+      },
+      ...sections[_type == "greetings"]{
+        ...,
+        "title": title[_key == "${locale}"][0].value,
+        "subtitle": subtitle[_key == "${locale}"][0].value,
+        "description1": description1[_key == "${locale}"][0].value,
+        "description2": description2[_key == "${locale}"][0].value,
+      },
+      ...sections[_type == "teamSection"]{
+        ...,teamList[]->
+      },
+    ],
+    "teamSeo": {"title" : teamSeo.title[_key == "${locale}"][0].value, "description":teamSeo.description[_key == "${locale}"][0].value}
+
+  }
+`;
+export const aboutPageQuery = (locale: string) => groq`
+  *[_type == "about"][0]
+`;
+export const contactPageQuery = (locale: string) => groq`
+  *[_type == "contact"][0]
+`;
+
 const newsPathsQuery = groq`
  *[_type == "news"]{slug}
 `;
@@ -98,6 +128,24 @@ export async function getServicePage(
   locale: string | undefined
 ): Promise<any> {
   return await client.fetch(servicePageQuery(locale || "id"));
+}
+export async function getTeamPage(
+  client: SanityClient,
+  locale: string | undefined
+): Promise<any> {
+  return await client.fetch(teamPageQuery(locale || "id"));
+}
+export async function getAboutPage(
+  client: SanityClient,
+  locale: string | undefined
+): Promise<any> {
+  return await client.fetch(aboutPageQuery(locale || "id"));
+}
+export async function getContactPage(
+  client: SanityClient,
+  locale: string | undefined
+): Promise<any> {
+  return await client.fetch(contactPageQuery(locale || "id"));
 }
 
 export async function getNews(client: SanityClient): Promise<any> {

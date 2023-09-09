@@ -38,10 +38,11 @@ export default function ServicePage({
               bgSrc={urlForImage(data?.image).url()}
               title={data?.title}
               subtitle={data?.subtitle}
+              key={data?._key}
             />
           );
         case "features":
-          return <Services data={data} />;
+          return <Services data={data} key={data?._key} />;
         default:
           break;
       }
@@ -50,7 +51,10 @@ export default function ServicePage({
     <>
       <Head>
         <title>{serviceData?.serviceSeo?.title}</title>
-        <meta name="description" content={data?.serviceSeo?.description} />
+        <meta
+          name="description"
+          content={serviceData?.serviceSeo?.description}
+        />
       </Head>
       {serviceData?.sections && renderComponents(serviceData?.sections)}
       <Newsletter />
