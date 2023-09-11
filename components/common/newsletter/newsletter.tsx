@@ -46,7 +46,7 @@ interface INewsletterCard {
 function NewsletterCard({ releaseAt, title, slug }: INewsletterCard) {
   return (
     <div>
-      <p>
+      <p className="xl:text-sm 2xl:text-base">
         {new Date(releaseAt).toLocaleDateString("en-US", {
           year: "numeric",
           month: "long",

@@ -18,7 +18,6 @@ export default function App({
   pageProps,
 }: AppProps<SharedPageProps>) {
   const { draftMode, token } = pageProps;
-
   return (
     <>
       {draftMode ? (
