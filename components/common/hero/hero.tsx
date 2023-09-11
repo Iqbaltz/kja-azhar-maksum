@@ -29,7 +29,7 @@ export default function Hero({
           {title}
         </h1>
         <p
-          className={`text-lg lg:text-xl 2xl:text-2xl mb-12 max-w-[680px] ${
+          className={`text-lg lg:text-xl 2xl:text-2xl mb-12 xl:max-w-[640px] 2xl:max-w-[740px] ${
             isNews && "opacity-60"
           }`}
         >

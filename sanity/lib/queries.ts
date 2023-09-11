@@ -138,6 +138,15 @@ export const contactPageQuery = (locale: string) => groq`
   }
 `;
 
+export const contactInfoQuery = groq`
+*[_type == "contact"][0]{
+  "location": contacts.contactInfoList[contactType == "location"][0].value,
+  "email": contacts.contactInfoList[contactType == "email"][0].value,
+  "number": contacts.contactInfoList[contactType == "number"][0].value,
+  socialMedia
+}
+`;
+
 const newsPathsQuery = groq`
  *[_type == "news"]{slug}
 `;
@@ -198,6 +207,11 @@ export async function getContactPage(
   locale: string | undefined
 ): Promise<any> {
   return await client.fetch(contactPageQuery(locale || "id"));
+}
+export async function getContactInformation(
+  client: SanityClient
+): Promise<any> {
+  return await client.fetch(contactInfoQuery);
 }
 
 export async function getNews(client: SanityClient): Promise<any> {

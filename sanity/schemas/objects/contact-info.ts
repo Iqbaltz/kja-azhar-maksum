@@ -28,6 +28,21 @@ export default defineType({
               type: "string",
             },
             {
+              title: "Contact Type",
+              name: "contactType",
+              type: "string",
+              options: {
+                list: [
+                  { title: "Email", value: "email" },
+                  { title: "Number", value: "number" },
+                  { title: "Location", value: "location" },
+                ],
+                layout: "radio",
+                direction: "horizontal",
+              },
+              initialValue: "email",
+            },
+            {
               title: "Icon",
               name: "icon",
               type: "image",
