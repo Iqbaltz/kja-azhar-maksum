@@ -7,12 +7,49 @@ export default defineType({
   title: "News",
   type: "document",
   icon: DocumentsIcon,
+  groups: [
+    {
+      name: "page",
+      title: "Page",
+    },
+    {
+      name: "seo",
+      title: "SEO",
+    },
+  ],
   fields: [
+    {
+      title: "News SEO",
+      name: "seo",
+      type: "object",
+      fields: [
+        defineField({ name: "title", type: "internationalizedArrayString" }),
+        defineField({
+          name: "description",
+          type: "internationalizedArrayText",
+        }),
+        defineField({
+          name: "keywords",
+          title: "Keywords",
+          type: "string",
+        }),
+        defineField({
+          name: "image",
+          title: "Image",
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+        }),
+      ],
+      group: "seo",
+    },
     {
       name: "title",
       title: "Title",
       type: "string",
       validation: (rule: any) => rule.required(),
+      group: "page",
     },
     {
       name: "slug",
@@ -22,6 +59,7 @@ export default defineType({
         source: "title",
       },
       validation: (rule: any) => rule.required(),
+      group: "page",
     },
     {
       name: "author",
@@ -31,11 +69,13 @@ export default defineType({
       options: {
         disableNew: true,
       },
+      group: "page",
     },
     {
       name: "excerpt",
       title: "Excerpt (Kutipan Singkat)",
       type: "text",
+      group: "page",
     },
     {
       name: "mainImage",
@@ -45,12 +85,14 @@ export default defineType({
         hotspot: true,
       },
       validation: (rule: any) => rule.required(),
+      group: "page",
     },
     {
       name: "body",
       title: "Body",
       type: "blockContent",
       validation: (rule: any) => rule.required(),
+      group: "page",
     },
   ],
   preview: {
