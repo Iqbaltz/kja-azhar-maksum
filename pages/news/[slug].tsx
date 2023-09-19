@@ -113,10 +113,11 @@ export default function NewsPage({
           <div className="bg-lightgrey px-10 py-12 ml-12 hidden xl:block">
             <h1 className="questa text-2xl">Berita Lainnya</h1>
             {otherNews?.map(({ title, slug }: any, i: number) => (
-              <p className="max-w-[320px] xl:text-sm 2xl:text-base mt-6">
-                <Link href={`/news/${slug}`} key={i}>
-                  {title}
-                </Link>
+              <p
+                className="max-w-[320px] xl:text-sm 2xl:text-base mt-6"
+                key={i}
+              >
+                <Link href={`/news/${slug}`}>{title}</Link>
               </p>
             ))}
           </div>
