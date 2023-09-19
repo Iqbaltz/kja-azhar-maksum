@@ -48,7 +48,6 @@ export default defineType({
       name: "title",
       title: "Title",
       type: "string",
-      validation: (rule: any) => rule.required(),
       group: "page",
     },
     {
@@ -84,14 +83,12 @@ export default defineType({
       options: {
         hotspot: true,
       },
-      validation: (rule: any) => rule.required(),
       group: "page",
     },
     {
       name: "body",
       title: "Body",
       type: "blockContent",
-      validation: (rule: any) => rule.required(),
       group: "page",
     },
   ],
