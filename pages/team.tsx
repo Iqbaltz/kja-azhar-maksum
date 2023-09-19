@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps = async ({
   };
 };
 
-export default function page({
+export default function TeamPage({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { locale } = useRouter();

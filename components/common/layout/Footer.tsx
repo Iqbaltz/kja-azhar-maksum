@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { InstagramIcon, LinkedinIcon } from "../shapes";
 import { useRouter } from "next/router";
 import { languageList } from "./Navbar";
+import { getContactInformation, getSimpleNews } from "@/sanity/lib/queries";
+import { client } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
 
 const menuList = [
   {
@@ -67,6 +70,15 @@ const resourceList = [
 
 export default function Footer() {
   const { locale } = useRouter();
+  const [data, setData] = useState<any>();
+  const fetchContact = async () => {
+    const res = await getContactInformation(client);
+    setData(res);
+  };
+
+  useEffect(() => {
+    fetchContact();
+  }, []);
 
   return (
     <footer className="bg-primary text-white py-20 px-4 lg:px-0">
@@ -78,18 +90,17 @@ export default function Footer() {
                 <h3 className="mb-4 text-xl 2xl:text-2xl">
                   {locale == "id" ? "Kantor Pusat" : "Head Office"}
                 </h3>
-                <address className="opacity-60 not-italic">
-                  Jl. Karya Wisata, Komplek Perumahan Dosen Ekonomi Universitas
-                  Sumatera Utara No. 21 Kel. Gedung Johor, Medan 20144
+                <address className="opacity-60 text-base max-w-[484px] 2xl:max-w-[720px] xl:text-sm 2xl:text-lg not-italic">
+                  {data?.location}
                 </address>
               </div>
               <div className="mb-6 lg:mb-12">
                 <h3 className="mb-4 text-xl 2xl:text-2xl">
                   {locale == "id" ? "Hubungi Kami" : "Contact Us"}
                 </h3>
-                <div className="opacity-60">
-                  <p>kjaazharmaksumdanrekan@gmail.com</p>
-                  <p>+62 813 6205 8121</p>
+                <div className="opacity-60 text-base xl:text-sm 2xl:text-lg">
+                  <p>{data?.email}</p>
+                  <p>{data?.number}</p>
                 </div>
               </div>
             </div>
@@ -101,7 +112,7 @@ export default function Footer() {
                 <ul>
                   {menuList?.map(({ label, url }, i) => (
                     <li
-                      className="mb-3 opacity-60 hover:opacity-100 transition-opacity duration-200"
+                      className="mb-3 opacity-60 text-base xl:text-sm 2xl:text-lg hover:opacity-100 transition-opacity duration-200"
                       key={i}
                     >
                       <a href={url}>
@@ -111,7 +122,7 @@ export default function Footer() {
                       </a>
                     </li>
                   ))}
-                  <li className="mb-3 opacity-60 hover:opacity-100 transition-opacity duration-200">
+                  <li className="mb-3 opacity-60 text-base xl:text-sm 2xl:text-lg hover:opacity-100 transition-opacity duration-200">
                     <a href="#">
                       {locale == "id" ? "Registrasi" : "Registration"}
                     </a>
@@ -125,7 +136,7 @@ export default function Footer() {
                 <ul>
                   {resourceList.map(({ label, url }, i) => (
                     <li
-                      className="mb-3 opacity-60 hover:opacity-100 transition-opacity duration-200"
+                      className="mb-3 opacity-60 text-base xl:text-sm 2xl:text-lg hover:opacity-100 transition-opacity duration-200"
                       key={i}
                     >
                       <a href={url}>
@@ -141,12 +152,23 @@ export default function Footer() {
           </div>
           <div className="lg:w-1/3 flex flex-col justify-between items-center lg:items-end">
             <div className="flex mb-8 lg:mb-0">
-              <a href="#" className="mr-4">
-                <LinkedinIcon className="fill-white hover:fill-lightsecondary transition-colors duration-200" />
-              </a>
-              <a href="#">
-                <InstagramIcon className="fill-white hover:fill-lightsecondary transition-colors duration-200" />
-              </a>
+              {data?.socialMedia?.map(
+                ({ icon, title, url }: any, i: number) => (
+                  <a
+                    href={url}
+                    className="mr-4 w-10 h-10 flex justify-center items-center bg-white hover:bg-lightsecondary transition-colors duration-200 rounded-full"
+                    key={i}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      className="max-w-[24px]"
+                      src={urlForImage(icon).url()}
+                      alt={title}
+                    />
+                  </a>
+                )
+              )}
             </div>
             <img src="/images/logo-footer.png" alt="logo" />
           </div>

@@ -23,7 +23,20 @@ export default defineType({
         defineField({ name: "title", type: "internationalizedArrayString" }),
         defineField({
           name: "description",
-          type: "internationalizedArrayString",
+          type: "internationalizedArrayText",
+        }),
+        defineField({
+          name: "keywords",
+          title: "Keywords",
+          type: "string",
+        }),
+        defineField({
+          name: "image",
+          title: "Image",
+          type: "image",
+          options: {
+            hotspot: true,
+          },
         }),
       ],
       group: "seo",

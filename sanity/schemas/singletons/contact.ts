@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
 export default defineType({
   name: "contact",
@@ -23,7 +23,20 @@ export default defineType({
         defineField({ name: "title", type: "internationalizedArrayString" }),
         defineField({
           name: "description",
-          type: "internationalizedArrayString",
+          type: "internationalizedArrayText",
+        }),
+        defineField({
+          name: "keywords",
+          title: "Keywords",
+          type: "string",
+        }),
+        defineField({
+          name: "image",
+          title: "Image",
+          type: "image",
+          options: {
+            hotspot: true,
+          },
         }),
       ],
       group: "seo",
@@ -52,6 +65,49 @@ export default defineType({
       name: "contacts",
       type: "contactInfo",
       group: "page",
+    }),
+    defineField({
+      title: "Social Media",
+      name: "socialMedia",
+      type: "array",
+      of: [
+        defineArrayMember({
+          title: "Info",
+          name: "info",
+          type: "object",
+          fields: [
+            {
+              title: "Name",
+              name: "title",
+              type: "string",
+            },
+            {
+              title: "URL",
+              name: "url",
+              type: "url",
+            },
+            {
+              title: "Icon",
+              name: "icon",
+              type: "image",
+            },
+          ],
+          preview: {
+            select: {
+              title: "title",
+              subtitle: "url",
+              icon: "icon",
+            },
+            prepare({ title, subtitle, icon }) {
+              return {
+                title,
+                subtitle,
+                media: icon,
+              };
+            },
+          },
+        }),
+      ],
     }),
   ],
   preview: {
