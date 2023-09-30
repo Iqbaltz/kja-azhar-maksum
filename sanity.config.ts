@@ -12,6 +12,7 @@ import { schema } from "./sanity/schema";
 import { myStructure } from "./sanity/desk/deskStructure";
 import { internationalizedArray } from "sanity-plugin-internationalized-array";
 import { defaultDocumentNode } from "./sanity/desk/defaultDocumentNode";
+import { previewUrl } from "sanity-plugin-iframe-pane/preview-url";
 
 export default defineConfig({
   basePath: "/studio",
@@ -24,6 +25,12 @@ export default defineConfig({
       structure: myStructure,
       defaultDocumentNode,
     }),
+
+    // // Add the "Open preview" action
+    // previewUrl({
+    //   base: "/api/preview",
+    //   requiresSlug: ["news"],
+    // }),
     // Vision is a tool that lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),

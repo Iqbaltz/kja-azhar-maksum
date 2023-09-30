@@ -1,12 +1,12 @@
 import { Hero } from "@/components/common/hero";
 import { Newsletter } from "@/components/common/newsletter";
-import { LinkedinIcon } from "@/components/common/shapes";
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 import {
   getNewsBySlug,
   getNewsPaths,
   getSimpleNews,
+  newsSlugQuery,
 } from "@/sanity/lib/queries";
 import { PortableText } from "@portabletext/react";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
@@ -18,6 +18,8 @@ import {
 } from "next-share";
 import Link from "next/link";
 import React from "react";
+import { useLiveQuery } from "next-sanity/preview";
+import { readToken } from "@/sanity/env";
 
 const myBlocks: any = {
   h1: ({ children }: { children: React.ReactNode }) => (
@@ -58,11 +60,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({
   params,
   locale,
+  draftMode = false,
 }: any) => {
-  const news = await getNewsBySlug(client, params?.slug);
+  const newsData = await getNewsBySlug(client, params?.slug);
   const otherNews = await getSimpleNews(client);
 
-  if (!news) {
+  if (!newsData) {
     return {
       redirect: {
         destination: "/",
@@ -72,29 +75,32 @@ export const getStaticProps: GetStaticProps = async ({
   }
   return {
     props: {
-      news,
+      draftMode,
+      newsData,
       otherNews,
       locale,
+      token: draftMode ? readToken : "",
     },
     revalidate: 1,
   };
 };
 
 export default function NewsPage({
-  news,
+  newsData,
   otherNews,
   locale,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const [news] = useLiveQuery(newsData, newsSlugQuery(newsData?.slug?.current));
+
   const url = `https://kja-azhar-maksum.vercel.app/news/${news?.slug?.current}`;
 
-  console.log(locale);
   if (!news) {
     return <div>Loading...</div>;
   }
   return (
     <>
       <Hero
-        bgSrc={urlForImage(news?.mainImage).url()}
+        bgSrc={news?.mainImage ? urlForImage(news?.mainImage).url() : ""}
         title={news?.title}
         subtitle={`Diterbitkan oleh ${news?.author?.name}. ${new Date(
           news._createdAt

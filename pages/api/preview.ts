@@ -1,7 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default function preview(req: NextApiRequest, res: NextApiResponse) {
-  const { type } = req.query;
+  const { query } = req;
+  const { type } = query;
+  const slug = typeof query.slug === "string" ? query.slug : undefined;
+
   res.setDraftMode({ enable: true });
   switch (type) {
     case "services":
@@ -13,6 +16,12 @@ export default function preview(req: NextApiRequest, res: NextApiResponse) {
     case "contact":
       res.writeHead(307, { Location: "/contact" });
     default:
+      if (slug) {
+        res.setDraftMode({ enable: true });
+        res.writeHead(307, { Location: `/news/${slug}` });
+        res.end();
+        return;
+      }
       res.writeHead(307, { Location: "/" });
   }
   res.end();

@@ -164,6 +164,11 @@ const simpleNewsQuery = groq`
 }
 `;
 
+export const newsSlugQuery = (slug: string) =>
+  groq`*[_type == "news" && slug.current == "${slug}"][0]{
+    ..., author->
+  }`;
+
 const sortSections = (data: any) => {
   const itemPositions: any = {};
   for (const [index, _key] of data?.sortSection.entries()) {
@@ -236,10 +241,6 @@ export async function getNewsBySlug(
   client: SanityClient,
   slug: string
 ): Promise<any> {
-  const items = await client.fetch(
-    `*[_type == "news" && slug.current == "${slug}"]{
-      ..., author->
-    }`
-  );
-  return items[0];
+  const items = await client.fetch(newsSlugQuery(slug));
+  return items;
 }
